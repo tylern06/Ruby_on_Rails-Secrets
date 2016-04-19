@@ -1,0 +1,30 @@
+<html lang="en">
+	<head>
+	    <title>New</title>
+	</head>
+	<body>
+		
+
+
+    <div class="row" id="new-container">
+		  <div class="col-md-8" id="test2">		
+		  	<% if flash[:errors] %>
+					<% flash[:errors].each do |error| %>
+						<p><%= error %></p>
+					<% end %>	
+				<% end %>
+				<form action='/users/create' method='post'>
+					<input name='authenticity_token' value='<%= form_authenticity_token %>' type='hidden'>
+					<p>Email <input id='Email' type='email' name='user[email]'></p>
+					<p>Name <input  id='Name' type='text' name='user[name]'></p>
+					<p>Password <input id='Password' type='password' name='user[password]'></p>
+					<p>Password Confirmation <input id='Password Confirmation' type='password' name='user[password_confirmation]'></p>
+					<input type='submit' value='Join'>
+				</form></div>
+		  <div class="col-md-4" id="test"></div>
+		</div>
+
+	
+	
+	</body>
+</html>

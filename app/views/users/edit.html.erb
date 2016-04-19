@@ -1,0 +1,38 @@
+<html lang="en">
+	<head>
+	    <title>Edit</title>
+	</head>
+	<body>
+		<div class='container'>
+			<% if flash[:errors] %>
+				<% flash[:errors].each do |error| %>
+					<p><%= error %></p>
+				<% end %>	
+			<% end %>
+			<!-- Stack the columns on mobile by making one full-width and the other half-width -->
+				<div class="row">
+				  
+				  <div class="col-md-4">
+							<form action='/users/<%= session[:id] %>' method='post'>
+								<input name='authenticity_token' value='<%= form_authenticity_token %>' type='hidden'>
+								<!-- hidden HTTP patch request -->
+								<input type='hidden' name='_method' value='patch'>
+								<p>Email <input id='Email' type='email' value='<%= @user.email %>'name='user[email]'></p>
+								<p>Name <input  id='Name' type='text' value='<%= @user.name %>' name='user[name]'></p>
+								<p>Password <input id='Password' type='password' name='user[password]'></p>
+								
+								<input type='submit' value='Update'>
+							</form>
+							<form action='/users/<%= session[:id] %>' method='post'>
+								<input name='authenticity_token' value='<%= form_authenticity_token %>' type='hidden'>
+								<!-- hidden HTTP delete request -->
+								<input type='hidden' name='_method' value='delete'>
+								<input type='submit' value='Delete Account'>
+							</form>
+
+				  </div>
+				</div>
+
+		</div>
+	</body>
+</html>

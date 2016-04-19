@@ -1,0 +1,56 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+ */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "bootstrap/theme";
+
+*{
+	margin-top: 5px;
+}
+#new-container{
+	margin-top: 100px;
+	
+}
+
+div.form-control{
+	width: 20% !important;
+	color: blue;
+}
+
+#show1{
+	margin-top: 100px;
+}
+
+img#likes{
+	vertical-align: top;
+	position: relative;
+	bottom: 3px;
+}
+
+div.link{
+	text-align: right;
+}
+
+div.header{
+	text-align: left;
+}
+
+form {
+    display: inline-block;/* //Or display: inline; */
+}
+
+/*input.liker{
+	visibility: hidden;
+}*/

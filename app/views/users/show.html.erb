@@ -1,0 +1,89 @@
+
+<html lang="en">
+	<head>
+	    <title>Logged In</title>
+	</head>
+	<body>
+		<nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container" >
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="/users/<%= session[:id] %>">Welcome <%= @user.name %></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/secrets">Show All Secrets</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/users/<%= session[:id] %>/edit">Edit Profile</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/users/logout">Log Out</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+		<div class='container' id='show1'>
+			<% if flash[:success] %>
+				<%= flash[:success] %>
+			<% end %>
+				
+			<% if flash[:errors] %>
+				<%= flash[:errors] %>
+			<% end %>
+				<div class="row">
+				  <div class="col-md-4">
+				  	<form action='/secrets/create' method='post'>
+							<input name='authenticity_token' value='<%= form_authenticity_token %>' type='hidden'>
+							<h3>New Secret </h3><textarea id='New Secret' name='secret[content]'></textarea><br>
+							<div clas='row'>
+								<p><input type='submit' value='Create Secret'></p>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<h2>Secrets</h2>
+						<% @secrets.each do |secret| %>
+							<% if secret.user_id == session[:id] %>
+								<p><%= secret.content %> <a href="/secrets/<%= secret.id %>/destroy" data-method='delete'>Delete</a></p>
+							<% end %>
+						<% end %>
+					</div>
+					<div class="col-md-4">
+						<h2>Secrets Liked</h2>
+						<% @secrets_liked.each do |secret| %>
+							<p><%= secret.content %></p>
+							<p><%= secret.likes.count %> likes</p>
+						<% end %>
+					</div>
+				</div>
+		</div>
+	</body>
+</html>
+
+					
+
+				
+		
+		
+	
+			
+			
+

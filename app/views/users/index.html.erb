@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	    <title>Log In </title>
+	</head>
+	<body >
+		<div class='container'>
+
+			<% if flash[:errors] %>
+				<%= flash[:errors] %>
+				
+			<% end %>
+			<% if flash[:logout] %>
+				<%= flash[:logout] %>
+			<% end %>
+			<div class="row">
+	
+			  <div class="col-md-4">
+					<form action='/sessions/new' method='post'>
+						<div class='form-group'>
+							<input name='authenticity_token' value='<%= form_authenticity_token %>' type='hidden'>
+							  <label for="Email">Email address</label>
+							    <input type="email" class="form-control" id="Email" placeholder="Email" name='user[email]'>
+							  </div>
+							  <div class="form-group">
+							    <label for="Password">Password</label>
+							    <input type="password" class="form-control" id="Password" placeholder="Password" name='user[password]'>
+							  </div>
+							  <button type="submit" class="btn btn-default">Log In </button>
+					</form>
+
+			  </div>
+			</div>	
+		
+			<p><a href="/users/new">New User</a></p>
+		</div>
+	</body>
+</html>
+	
+
+	
+
+   
+
+					  
+					 

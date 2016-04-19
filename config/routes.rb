@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'users#index'
   get 'secrets' => 'secrets#index'
   # get 'secrets/show' => 'secrets#show'
   post 'secrets/create' => 'secrets#create'

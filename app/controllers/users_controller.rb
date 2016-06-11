@@ -27,11 +27,6 @@ class UsersController < ApplicationController
     @user = User.find(session[:id])
     @secrets = @user.secrets
     @secrets_liked = @user.secrets_liked
-
-    
-  end
-
-  def destroy
   end
 
   def edit
@@ -56,6 +51,7 @@ class UsersController < ApplicationController
 
   def destroy
     User.destroy(session[:id])
+    session[:id] = nil
     redirect_to "/sessions/new"
   end
   def login
@@ -82,3 +78,5 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name,:email,:password, :password_confirmation)
   end
 end
+    
+
